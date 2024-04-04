@@ -1,0 +1,23 @@
+server:
+  port: 8285
+
+spring:
+  application:
+    name: api-gateway
+
+  cloud:
+    gateway:
+      routes:
+        - id: device-service
+          uri: lb://device-service
+          predicates:
+            - Path=/devices/**
+          filters:
+            - PrefixPath=/api/v1
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+eureka:
+  instance:
+    hostname: localhost
