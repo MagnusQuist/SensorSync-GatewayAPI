@@ -14,6 +14,7 @@ spring:
             - Path=/devices/**
           filters:
             - PrefixPath=/api/v1
+            - AuthFilter
       discovery:
         locator:
           enabled: true
@@ -21,3 +22,14 @@ spring:
 eureka:
   instance:
     hostname: localhost
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+    gateway:
+      enabled: true
