@@ -7,6 +7,12 @@ spring:
 
   cloud:
     gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "localhost"
+            allowedHeaders: "*"
+            allowedMethods: "*"
       routes:
         - id: device-service
           uri: lb://device-service
