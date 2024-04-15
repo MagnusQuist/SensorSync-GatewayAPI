@@ -34,8 +34,6 @@ spring:
           enabled: true
           lower-case-service-id: true
 eureka:
-  instance:
-    hostname: ${SERVICE_REGISTRY_URL:localhost}
   client:
     service-url:
       defaultZone: ${SERVICE_REGISTRY_URL:http://localhost:8761}/eureka/
