@@ -7,8 +7,10 @@ spring:
 
   cloud:
     gateway:
+      default-filters:
+        - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
       globalcors:
-        cors-configurations:
+        corsConfigurations:
           '[/**]':
             allowedOrigins: "*"
             allowedHeaders: "*"
@@ -17,14 +19,14 @@ spring:
         - id: device-service
           uri: lb://device-service
           predicates:
-            - Path=/devices/**
+            - Path=/api/devices/**
           filters:
             - PrefixPath=/api/v1
             - AuthFilter
         - id: authentication-service
           uri: lb://authentication-service
           predicates:
-            - Path=/auth/**
+            - Path=/api/auth/**
           filters:
             - PrefixPath=/api/v1
       discovery:
