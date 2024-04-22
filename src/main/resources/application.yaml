@@ -22,13 +22,14 @@ spring:
             - Path=/devices/**
           filters:
             - PrefixPath=/api/v1
-            - AuthFilter
+            - AuthenticationFilterFactory
         - id: authentication-service
           uri: lb://authentication-service
           predicates:
             - Path=/auth/**
           filters:
             - PrefixPath=/api/v1
+            - AuthenticationFilterFactory
       discovery:
         locator:
           enabled: true
