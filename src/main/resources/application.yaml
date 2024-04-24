@@ -23,6 +23,20 @@ spring:
           filters:
             - PrefixPath=/api/v1
             - AuthFilter
+        - id: firmware-service
+          uri: lb://firmware-service
+          predicates:
+            - Path=/firmware/**
+          filters:
+            - PrefixPath=/api/v1
+            - AuthFilter
+        - id: message-service
+          uri: lb://message-service
+          predicates:
+            - Path=/mqtt/**
+          filters:
+            - PrefixPath=/api/v1
+            - AuthFilter
         - id: authentication-service
           uri: lb://authentication-service
           predicates:
